@@ -6,9 +6,15 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
-    "hono": "^4.7.10"
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "hono": "^4.7.10",
+    "mysql2": "^3.14.1"
   },
   "devDependencies": {
+    "@types/node": "^22.15.23",
+    "drizzle-kit": "^0.31.1",
+    "tsx": "^4.19.4",
     "wrangler": "^4.4.0"
   }
 }
