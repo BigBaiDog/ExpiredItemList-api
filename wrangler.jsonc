@@ -6,6 +6,16 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "routes": [
+    {
+      "pattern": "box.bigbaidog.dpdns.org",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
   "vars": {
     "EMAIL_ROBOT": "1194423126@qq.com",
   },
