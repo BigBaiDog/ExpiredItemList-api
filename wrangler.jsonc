@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ExpiredItemList",
+  "name": "expired-item-list",
   "main": "src/index.ts",
   "compatibility_date": "2025-05-28",
   "compatibility_flags": [
