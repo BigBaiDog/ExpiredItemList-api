@@ -6,14 +6,14 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "vars": {
+    "EMAIL_ROBOT": "1194423126@qq.com",
+  },
   "triggers": {
     "crons": [
       "0 9 * * *"
     ]
   }
-  // "vars": {
-  //   "MY_VAR": "my-variable"
-  // },
   // "kv_namespaces": [
   //   {
   //     "binding": "MY_KV_NAMESPACE",
