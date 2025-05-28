@@ -1,9 +1,38 @@
 import { Env, ExecutionContext, Hono } from 'hono'
 import nodemailer from 'nodemailer'
 
-const app = new Hono()
+
+type Bindings = {
+  EMAIL_ROBOT: string
+  EMAIL_AUTH_CODE: string
+}
+
+const app = new Hono<{ Bindings: Bindings }>()
 
 app.get('/', (c) => {
+  const transporter = nodemailer.createTransport({
+      host: "smtp.qq.com",
+      port: 465,
+      auth: {
+        user: c.env.EMAIL_ROBOT,
+        pass: c.env.EMAIL_AUTH_CODE
+      }
+    });
+    (async () => {
+      try {
+        const info = await transporter.sendMail({
+          from: "robot<" + c.env.EMAIL_ROBOT + ">",
+          to: "770720805@qq.com, 1194423126@qq.com",
+          subject: "Hello",
+          text: "Hello world?",
+          html: "<b>Hello world?</b>",
+        });
+        console.log("Message sent: %s", info.messageId);
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      } catch (err) {
+        console.error("Error while sending mail", err);
+      }
+    })();
   return c.text('Hello Hono!')
 })
 
