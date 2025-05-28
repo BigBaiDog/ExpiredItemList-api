@@ -1,11 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "api",
+  "name": "ExpiredItemList",
   "main": "src/index.ts",
   "compatibility_date": "2025-05-28",
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  "triggers": {
+    "crons": [
+      "0 9 * * *"
+    ]
+  }
   // "vars": {
   //   "MY_VAR": "my-variable"
   // },
