@@ -1,12 +1,13 @@
-import { ExecutionContext, Hono } from 'hono'
+import { Hono } from 'hono'
 import nodemailer from 'nodemailer'
 import { ScheduledController } from '@cloudflare/workers-types'
+import authors from './authors'
+import books from './books'
 
 const app = new Hono()
 
-app.get('/', async (c) => {
-  return c.text('Hello Hono!')
-})
+app.route('/authors', authors)
+app.route('/books', books)
 
 interface Env {
   EMAIL_ROBOT: string;
@@ -14,11 +15,8 @@ interface Env {
 }
 
 export default {
-  fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    return app.fetch(request, env, ctx)
-  },
-
-  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext,) {
+  fetch: app.fetch,
+  scheduled: async (controller: ScheduledController, env: Env) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.qq.com",
       port: 465,
@@ -43,7 +41,7 @@ export default {
     } catch (err) {
       console.error("Error while sending mail", err);
     } finally {
-      transporter.close()
+      transporter.removeAllListeners(); // 显式关闭 
     }
   },
 }
