@@ -42,6 +42,8 @@ export default {
       console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     } catch (err) {
       console.error("Error while sending mail", err);
+    } finally {
+      transporter.close()
     }
   },
 }
