@@ -13,6 +13,7 @@
     "nodemailer": "^7.0.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250529.0",
     "@types/node": "^22.15.23",
     "@types/nodemailer": "^6.4.17",
     "drizzle-kit": "^0.31.1",
