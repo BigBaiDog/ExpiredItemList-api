@@ -26,6 +26,8 @@ export default {
       pass: env.EMAIL_AUTH_CODE
     }
   });
+  console.log(env.EMAIL_ROBOT)
+  console.log(env.EMAIL_AUTH_CODE)
   console.log("邮箱配置成功");
   try {
     const info = await transporter.sendMail({
