@@ -1,23 +1,19 @@
-import {Env, Hono} from 'hono'
-import nodemailer from 'nodemailer'
-// import { ScheduledController } from '@cloudflare/workers-types'
-import authors from './authors'
-import books from './books'
-import {sendMailMessage} from './cronTriggers'
+import { Hono } from "hono"
+import { ScheduledController } from "@cloudflare/workers-types"
+import { Env } from "./types"
+import authors from "./authors"
+import books from "./books"
 
 const app = new Hono()
-// const send = new sendMailMessage()
-app.route('/authors', authors)
-app.route('/books', books)
 
-interface Env {
-  EMAIL_ROBOT: string;
-  EMAIL_AUTH_CODE: string;
-}
+app.route("/authors", authors)
+app.route("/books", books)
 
 export default {
   fetch: app.fetch,
-  scheduled: (event: any, env: Env) => {
-    sendMailMessage(env)
-  }
+  async scheduled(_controller: ScheduledController, env: Env) {
+    const {sendMailMessage} = await import("./cronTriggers")
+    await sendMailMessage(env)
+    console.log("cron processed")
+  },
 }
