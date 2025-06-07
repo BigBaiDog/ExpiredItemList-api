@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, date } from "drizzle-orm/mysql-core"
+import { mysqlTable, int, varchar, date,boolean } from "drizzle-orm/mysql-core"
 
 export const pendingNotification = mysqlTable("pending_notification", {
   id: int("id").primaryKey().autoincrement(),
@@ -6,5 +6,6 @@ export const pendingNotification = mysqlTable("pending_notification", {
   productionDate: date("production_date").notNull(),
   expirationDate: date("expiration_date").notNull(),
   userId: int("user_id").notNull(),
-  emailAddress: varchar("email_address", {length: 256}).notNull()
+  emailAddress: varchar("email_address", {length: 256}).notNull(),
+  send:boolean("send").default(false).notNull(),
 })

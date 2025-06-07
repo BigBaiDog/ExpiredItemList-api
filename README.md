@@ -24,4 +24,4 @@ const app = new Hono<{ Bindings: CloudflareBindings }>()
 
 npx wrangler dev --test-scheduled
 
-curl "http://localhost:8787/__scheduled?cron=0+*+*+*+*"
+curl "http://localhost:8787/__scheduled"

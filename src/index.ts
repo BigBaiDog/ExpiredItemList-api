@@ -15,5 +15,5 @@ export default {
     const {sendMailMessage} = await import("./cronTriggers")
     await sendMailMessage(env)
     console.log("cron processed")
-  },
+  }
 }

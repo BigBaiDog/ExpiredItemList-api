@@ -17,13 +17,19 @@
     "head_sampling_rate": 1
   },
   "vars": {
-    "EMAIL_ROBOT": "1194423126@qq.com",
+    "EMAIL_ROBOT": "1194423126@qq.com"
   },
   "triggers": {
     "crons": [
       "0 9 * * *"
     ]
-  }
+  },
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "8db1d5d461354fa8a81c6943f452c4b7"
+    }
+  ]
   // "kv_namespaces": [
   //   {
   //     "binding": "MY_KV_NAMESPACE",
@@ -46,8 +52,4 @@
   // "ai": {
   //   "binding": "AI"
   // },
-  // "observability": {
-  //   "enabled": true,
-  //   "head_sampling_rate": 1
-  // }
 }
