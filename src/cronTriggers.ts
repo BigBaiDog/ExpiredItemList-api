@@ -16,13 +16,15 @@ export async function sendMailMessage(env: Env): Promise<void> {
                                                    disableEval: true,
                                                  })
   const db = drizzle(connection)
+  const sevenDaysAgo = new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000);
+  console.log(sevenDaysAgo)
   const result = await db.select()
                                                            .from(pendingNotification)
                                                            .where(
                                                                and(
                                                                    eq(pendingNotification.userId, 7),
                                                                    eq(pendingNotification.send, false),
-                                                                   lte(pendingNotification.expirationDate, new Date())
+                                                                   lte(pendingNotification.expirationDate, sevenDaysAgo)
                                                                )
                                                            )
   console.log(result)
