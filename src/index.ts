@@ -1,13 +1,10 @@
 import { Hono } from "hono"
 import { ScheduledController } from "@cloudflare/workers-types"
 import { Env } from "./types"
-import authors from "./authors"
-import books from "./books"
-
+import items from "./items"
 const app = new Hono()
 
-app.route("/authors", authors)
-app.route("/books", books)
+app.route("/items", items)
 
 export default {
   fetch: app.fetch,
